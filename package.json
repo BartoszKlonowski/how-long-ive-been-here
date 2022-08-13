@@ -1,0 +1,56 @@
+{
+  "name": "how-long-ive-been-here",
+  "version": "1.0.1",
+  "description": "Mozilla Firefox extension plugin to monitor the time spent on a website",
+  "main": "manifest.json",
+  "scripts": {
+    "test": "jest",
+    "package-verify": "eslint . && npm run deploy && web-ext --source-dir ./build lint",
+    "ci": "npm run test && npm run package-verify",
+    "build": "babel --config-file ./.babelrc ./app -Dd ./build && webpack --mode development",
+    "deploy": "babel --config-file ./.babelrc ./app -Dd ./build && webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BartoszKlonowski/how-long-ive-been-here.git"
+  },
+  "keywords": [
+    "Firefox",
+    "Extension",
+    "Plugin",
+    "Website",
+    "Time"
+  ],
+  "author": "Bartosz Klonowski",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/BartoszKlonowski/how-long-ive-been-here/issues"
+  },
+  "homepage": "https://github.com/BartoszKlonowski/how-long-ive-been-here#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.15.8",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/register": "^7.14.5",
+    "babel-preset-react-app": "^10.0.0",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.6.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.26.1",
+    "jest": "^27.0.5",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "web-ext": "^6.5.0",
+    "webpack": "^5.42.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "jsdom"
+  }
+}

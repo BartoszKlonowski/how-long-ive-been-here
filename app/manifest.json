@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "How long I've been here",
+  "version": "0.0.1",
+
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "unlimitedStorage",
+		"storage"
+  ],
+
+  "background": {
+    "scripts": ["src/engine/Background.js"]
+  },
+
+  "icons": {
+    "600": "icons/"
+  },
+
+  "description": "Monitors and displays time spent on each website",
+
+  "browser_action": {
+    "default_icon": "icons/",
+    "default_title": "How long I've been here",
+    "default_popup": "src/popup/MainPopup.html"
+  }
+}
