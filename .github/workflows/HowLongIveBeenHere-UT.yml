@@ -9,19 +9,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-
-      - name: Display tools versions
-        run: npm --version;
+        uses: actions/checkout@v3
 
       - name: Restore all the packages
         run: npm ci
 
       - name: Cache
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v3.0.7
         with:
           path: ./node_modules
           key: ${{ hashFiles('./package.json') }}
@@ -34,13 +28,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v3
 
       - name: Cache
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v3.0.7
         with:
           path: ./node_modules
           key: ${{ hashFiles('./package.json') }}
@@ -56,13 +47,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v3
 
       - name: Pull the npm dependencies
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v3.0.7
         with:
           path: ./node_modules
           key: ${{ hashFiles('./package.json') }}
