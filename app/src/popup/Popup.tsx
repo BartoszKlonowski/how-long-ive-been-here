@@ -1,8 +1,10 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
 
+interface Props {};
+
 export class MainPopup extends React.Component {
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
     }
 
@@ -13,7 +15,7 @@ export class MainPopup extends React.Component {
     }
 }
 
-function listenForClicks(document) {
+function listenForClicks(document: Document) {
     document.addEventListener("click", (event) => {
         event.preventDefault();
     });
