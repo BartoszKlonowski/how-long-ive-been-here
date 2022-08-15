@@ -43,7 +43,7 @@
     "eslint-plugin-react": "^7.26.1",
     "jest": "^27.0.5",
     "prettier": "^2.3.2",
-    "react": "^17.0.2",
+    "react": "^18.2.0",
     "react-dom": "^17.0.2",
     "web-ext": "^6.5.0",
     "webpack": "^5.42.0",
@@ -52,5 +52,13 @@
   "jest": {
     "verbose": true,
     "testEnvironment": "jsdom"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "printWidth": 120,
+    "tabWidth": 4,
+    "bracketSpacing": false,
+    "jsxBracketSameLine": true,
+    "endOfLine": "auto"
   }
 }

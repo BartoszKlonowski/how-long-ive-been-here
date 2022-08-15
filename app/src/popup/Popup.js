@@ -1,4 +1,3 @@
-import * as logic from "./MainPopupLogic";
 import * as React from "react";
 import ReactDOM from "react-dom";
 
@@ -7,16 +6,18 @@ export class MainPopup extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-        
-    }
+    componentDidMount() {}
 
     render() {
-        return (
-            <div></div>
-        );
+        return <div></div>;
     }
 }
 
-logic.listenForClicks(document, browser);
+function listenForClicks(document) {
+    document.addEventListener("click", (event) => {
+        event.preventDefault();
+    });
+}
+
+listenForClicks(document);
 ReactDOM.render(<MainPopup />, document.getElementById("root"));

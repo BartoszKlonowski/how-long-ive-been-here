@@ -1,0 +1,143 @@
+name: HowLongIveBeenHere-CI
+
+on: [push]
+
+jobs:
+  install:
+    name: Install dependencies
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - name: Display tools versions
+        run: npm --version;
+
+      - name: Restore all the packages
+        run: npm ci
+
+      - name: Cache
+        uses: actions/cache@v2.1.6
+        with:
+          path: ./node_modules
+          key: ${{ hashFiles('./package.json') }}
+
+
+  verify:
+    name: Verify the sources
+    runs-on: windows-latest
+    needs: install
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - name: Cache
+        uses: actions/cache@v2.1.6
+        with:
+          path: ./node_modules
+          key: ${{ hashFiles('./package.json') }}
+
+      - name: Run ESLint on the sources
+        run: npx eslint .
+
+
+  pre-build-package-verify:
+    name: Verify the package before build
+    runs-on: windows-latest
+    needs: [verify, pre-build-package-compile]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - name: Pull the npm dependencies
+        uses: actions/cache@v2.1.6
+        with:
+          path: ./node_modules
+          key: ${{ hashFiles('./package.json') }}
+
+      - name: Pull the compiled sources
+        uses: actions/cache@v2.1.6
+        with:
+          path: ./build
+          key: ${{ hashFiles('./package.json') }}-${{ hashFiles('./app/manifest.json') }}
+
+      - name: Verify the package
+        run: npx web-ext --source-dir "./build" lint
+
+
+  pre-build-package-compile:
+    name: Compile the sources before build
+    runs-on: windows-latest
+    needs: [verify]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - name: Pull the npm dependencies
+        uses: actions/cache@v2.1.6
+        with:
+          path: ./node_modules
+          key: ${{ hashFiles('./package.json') }}
+
+      - name: Transpile
+        run: npx babel --config-file './.babelrc' ./app -Dd ./build
+
+      - name: Compile
+        run: npx webpack --mode 'production'
+
+      - name: Cache
+        uses: actions/cache@v2.1.6
+        with:
+          path: ./build
+          key: ${{ hashFiles('./package.json') }}-${{ hashFiles('./app/manifest.json') }}
+
+
+  build:
+    name: Build the release package
+    runs-on: windows-latest
+    needs: [pre-build-package-verify, pre-build-package-compile]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - name: Pull the npm dependencies
+        uses: actions/cache@v2.1.6
+        with:
+          path: ./node_modules
+          key: ${{ hashFiles('./package.json') }}
+
+      - name: Pull the compiled sources
+        uses: actions/cache@v2.1.6
+        with:
+          path: ./build
+          key: ${{ hashFiles('./package.json') }}-${{ hashFiles('./app/manifest.json') }}
+
+      - name: Build the release package
+        run: npx web-ext build --source-dir "./build"
+
+      - name: Store the built package
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-candidate-package
+          path: ./web-ext-artifacts/*
