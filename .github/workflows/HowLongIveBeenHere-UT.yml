@@ -1,0 +1,63 @@
+name: HowLongIveBeenHere-UT
+
+on: [push]
+
+jobs:
+  install:
+    name: Install dependencies
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3.0.7
+        env:
+          cache-name: cached-ios-npm-deps
+        with:
+          path: ./node_modules
+          key: ${{ hashFiles('./package.json') }}
+
+      - name: Install required dependencies on cache miss (npm)
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: |
+          npm install
+
+  verify:
+    name: Verify the sources
+    runs-on: windows-latest
+    needs: install
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Cache
+        uses: actions/cache@v3.0.7
+        with:
+          path: ./node_modules
+          key: ${{ hashFiles('./package.json') }}
+
+      - name: Run ESLint on the sources
+        run: npx eslint .
+
+
+  test:
+    name: Run the unit tests
+    runs-on: windows-latest
+    needs: [verify]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Pull the npm dependencies
+        uses: actions/cache@v3.0.7
+        with:
+          path: ./node_modules
+          key: ${{ hashFiles('./package.json') }}
+
+      - name: Run unit tests
+        run: npx jest
