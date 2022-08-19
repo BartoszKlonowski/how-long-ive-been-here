@@ -43,6 +43,8 @@ jobs:
       - name: Run ESLint on the sources
         run: npx eslint .
 
+      - name: Run typechecking
+        run: npx tsc --noEmit
 
   pre-build-package-verify:
     name: Verify the package before build
@@ -85,7 +87,7 @@ jobs:
           key: ${{ hashFiles('./package.json') }}
 
       - name: Transpile
-        run: npx babel --config-file './.babelrc' ./app -Dd ./build
+        run: npx babel --config-file './.babelrc' ./app --extensions ".ts,.tsx" -Dd ./build
 
       - name: Compile
         run: npx webpack --mode 'production'

@@ -1,0 +1,23 @@
+{
+  "include": ["./app/src/**/*"],
+
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "./build/ts",
+
+    /* Language and Environment */
+    "target": "ESNext",
+    "lib": ["DOM", "ES6"],
+
+    /* Modules */
+    "module": "commonjs",
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
+    "strict": true,
+    "skipLibCheck": true
+  }
+}

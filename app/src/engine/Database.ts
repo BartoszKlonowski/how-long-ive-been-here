@@ -1,6 +1,6 @@
 class Database {
+    storage: Storage;
     constructor() {
-        this.instance = {};
         this.storage = window.localStorage;
     }
 }
