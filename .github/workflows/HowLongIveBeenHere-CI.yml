@@ -43,6 +43,8 @@ jobs:
       - name: Run ESLint on the sources
         run: npx eslint .
 
+      - name: Run typechecking
+        run: npx tsc --noEmit
 
   pre-build-package-verify:
     name: Verify the package before build
