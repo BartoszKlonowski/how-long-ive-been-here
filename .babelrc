@@ -1,5 +1,6 @@
 {
     "presets": [
+      "@babel/preset-typescript",
       ["@babel/preset-env", {"targets": {"node": "current"}}],
       ["@babel/preset-react"]
     ],
@@ -8,7 +9,7 @@
           "sourceMaps": "inline"
         },
         "development": {
-          "presets": [["@babel/preset-react", { "development": true }]]
+          "presets": [["@babel/preset-typescript", { "development": true }]]
         }
     }
 }
