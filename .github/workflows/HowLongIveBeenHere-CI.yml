@@ -87,7 +87,7 @@ jobs:
           key: ${{ hashFiles('./package.json') }}
 
       - name: Transpile
-        run: npx babel --config-file './.babelrc' ./app --extensions \".ts,.tsx\" -Dd ./build
+        run: npx babel --config-file './.babelrc' ./app --extensions ".ts,.tsx" -Dd ./build
 
       - name: Compile
         run: npx webpack --mode 'production'
