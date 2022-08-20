@@ -14,10 +14,17 @@
     "scripts": ["src/engine/Background.js"]
   },
 
+  "icons": {
+    "192": "icons/mainIcon.png",
+    "384": "icons/mainIcon@2x.png",
+    "800": "icons/mainIcon@4x.png"
+  },
+
   "description": "Monitors and displays time spent on each website",
 
   "browser_action": {
     "default_title": "How long I've been here",
-    "default_popup": "src/popup/MainPopup.html"
+    "default_popup": "src/popup/MainPopup.html",
+    "default_icon": "icons/mainIcon@4x.png"
   }
 }
