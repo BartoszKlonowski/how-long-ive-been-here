@@ -1,10 +1,16 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import DurationHeader from "./subcomponents/DurationHeader";
 import ViewChangeButton from "./subcomponents/ViewChangeButton";
 
 export const Popup = (): JSX.Element => {
     const [expanded, setExpanded] = useState(false);
+
+    useEffect(() => {
+        document.addEventListener("click", (event) => {
+            event.preventDefault();
+        });
+    }, [document]);
 
     return (
         <div>
@@ -15,11 +21,4 @@ export const Popup = (): JSX.Element => {
     );
 };
 
-function listenForClicks(document: Document) {
-    document.addEventListener("click", (event) => {
-        event.preventDefault();
-    });
-}
-
-listenForClicks(document);
 ReactDOM.render(<Popup />, document.getElementById("root"));
