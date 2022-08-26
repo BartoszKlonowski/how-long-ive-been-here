@@ -1,4 +1,20 @@
 html, body {
-    width: 300px;
-    height: 150px;
-  }
+  width: 300px;
+}
+.view-change-button {
+  display: flex;
+  flex-direction: row;
+  justify-items: right;
+  justify-content: right;
+}
+.view-change-button-text {
+  padding: 10px;
+}
+.duration-header {
+  align-content: center;
+  justify-content: center;
+  height: 50px;
+}
+.duration-header-text {
+  padding: 10px;
+}

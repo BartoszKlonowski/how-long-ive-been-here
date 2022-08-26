@@ -24,7 +24,7 @@
 
   "browser_action": {
     "default_title": "How long I've been here",
-    "default_popup": "src/popup/MainPopup.html",
+    "default_popup": "src/popup/Popup.html",
     "default_icon": "icons/mainIcon@4x.png"
   }
 }

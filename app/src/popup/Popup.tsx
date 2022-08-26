@@ -1,17 +1,24 @@
-import * as React from "react";
+import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
+import DurationHeader from "./subcomponents/DurationHeader";
+import ViewChangeButton from "./subcomponents/ViewChangeButton";
 
-export class MainPopup extends React.Component {
-    render() {
-        return <div></div>;
-    }
-}
+export const Popup = (): JSX.Element => {
+    const [expanded, setExpanded] = useState(false);
 
-function listenForClicks(document: Document) {
-    document.addEventListener("click", (event) => {
-        event.preventDefault();
-    });
-}
+    useEffect(() => {
+        document.addEventListener("click", (event) => {
+            event.preventDefault();
+        });
+    }, [document]);
 
-listenForClicks(document);
-ReactDOM.render(<MainPopup />, document.getElementById("root"));
+    return (
+        <div>
+            <DurationHeader />
+            {expanded ? <div>ShrinkedViewPlaceholder</div> : <div>ExpandedViewPlaceholder</div>}
+            <ViewChangeButton isExpanded={expanded} onClick={setExpanded} />
+        </div>
+    );
+};
+
+ReactDOM.render(<Popup />, document.getElementById("root"));
