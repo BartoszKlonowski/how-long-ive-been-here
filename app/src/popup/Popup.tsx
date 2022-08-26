@@ -1,11 +1,19 @@
-import * as React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
+import DurationHeader from "./subcomponents/DurationHeader";
+import ViewChangeButton from "./subcomponents/ViewChangeButton";
 
-export class MainPopup extends React.Component {
-    render() {
-        return <div></div>;
-    }
-}
+export const Popup = (): JSX.Element => {
+    const [expanded, setExpanded] = useState(false);
+
+    return (
+        <div>
+            <DurationHeader />
+            {expanded ? <div>ShrinkedViewPlaceholder</div> : <div>ExpandedViewPlaceholder</div>}
+            <ViewChangeButton isExpanded={expanded} onClick={setExpanded} />
+        </div>
+    );
+};
 
 function listenForClicks(document: Document) {
     document.addEventListener("click", (event) => {
@@ -14,4 +22,4 @@ function listenForClicks(document: Document) {
 }
 
 listenForClicks(document);
-ReactDOM.render(<MainPopup />, document.getElementById("root"));
+ReactDOM.render(<Popup />, document.getElementById("root"));
