@@ -1,36 +1,24 @@
-import {getActiveTabDomainFromDocument, getWebsiteIconObject} from "../app/src/popup/Utils";
+import {getActiveTabDomainFromURL, getWebsiteIconObject} from "../app/src/popup/Utils";
 
-describe("getActiveTabDomainFromDocument", () => {
+describe("getActiveTabDomainFromURL", () => {
     it("gets the domain of valid active tab website with simplified URL", () => {
-        const fakeDocument = {
-            URL: String("https://fake-website-url.com"),
-            ...document,
-        };
-        expect(getActiveTabDomainFromDocument(fakeDocument)).toBe("fake-website-url.com");
+        const fakeURL = String("https://fake-website-url.com");
+        expect(getActiveTabDomainFromURL(fakeURL)).toBe("fake-website-url.com");
     });
 
     it("gets the domain of valid active tab website with complex URL", () => {
-        const fakeDocument = {
-            URL: "https://fake-website-url.com/complex-string-in-url",
-            ...document,
-        };
-        expect(getActiveTabDomainFromDocument(fakeDocument)).toBe("fake-website-url.com");
+        const fakeURL = String("https://fake-website-url.com/complex-string-in-url");
+        expect(getActiveTabDomainFromURL(fakeURL)).toBe("fake-website-url.com");
     });
 
     it("returns null to indicate the incorrect website URL if noticed", () => {
-        const fakeDocument = {
-            URL: "this is incorrect website URL",
-            ...document,
-        };
-        expect(getActiveTabDomainFromDocument(fakeDocument)).toBe(null);
+        const fakeURL = String("this is incorrect website URL");
+        expect(getActiveTabDomainFromURL(fakeURL)).toBe(null);
     });
 
     it("returns correct domain if URL does not start with https://", () => {
-        const fakeDocument = {
-            URL: "www.google.com",
-            ...document,
-        };
-        expect(getActiveTabDomainFromDocument(fakeDocument)).toBe("google.com");
+        const fakeURL = String("www.google.com");
+        expect(getActiveTabDomainFromURL(fakeURL)).toBe("google.com");
     });
 });
 
