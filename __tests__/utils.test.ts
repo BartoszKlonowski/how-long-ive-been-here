@@ -31,9 +31,17 @@ describe("getWebsiteIconObject", () => {
         });
     });
 
-    it("creates the object with question mark for non-existing or incorrect URL", () => {
+    it("creates the object with question mark for non-existing URL", () => {
         const fakeWebsiteURL = "";
         expect(getWebsiteIconObject(fakeWebsiteURL)).toEqual({
+            size: 16,
+            src: "../resources/missing-website-favicon.png",
+        });
+    });
+
+    it("creates the object with question mark for incorrect URL", () => {
+        const incorrectWebsiteURL = undefined;
+        expect(getWebsiteIconObject(incorrectWebsiteURL)).toEqual({
             size: 16,
             src: "../resources/missing-website-favicon.png",
         });

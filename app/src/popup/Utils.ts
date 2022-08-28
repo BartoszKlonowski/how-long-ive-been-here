@@ -8,7 +8,7 @@ export const getActiveTabDomainFromURL = (URL: string): string | null => {
     return results && !results[0].includes(" ") ? results[0] : null;
 };
 
-export const getWebsiteIconObject = (websiteURL: string): Icon => {
+export const getWebsiteIconObject = (websiteURL: string | undefined): Icon => {
     const iconDesiredSize = 16;
     const iconSource: string =
         websiteURL && websiteURL.length
