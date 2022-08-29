@@ -63,7 +63,8 @@
   },
   "jest": {
     "verbose": true,
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/__tests__/setupTests.ts"]
   },
   "prettier": {
     "trailingComma": "es5",

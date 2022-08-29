@@ -35,7 +35,8 @@
         "window": "readonly",
         "test": "writable",
         "expect": "writable",
-        "JSX": "readonly"
+        "JSX": "readonly",
+        "global": "writeable"
     },
     "settings": {
         "jsx-a11y": {
