@@ -1,5 +1,5 @@
 import React from "react";
-import TestRenderer, {ReactTestRenderer} from "react-test-renderer";
+import TestRenderer, {act, ReactTestInstance, ReactTestRenderer} from "react-test-renderer";
 import ShrinkedView from "../app/src/popup/subcomponents/ShrinkedView";
 
 function render(): ReactTestRenderer {
@@ -7,9 +7,35 @@ function render(): ReactTestRenderer {
     return shrinkedView;
 }
 
+async function renderAsObject(): Promise<ReactTestInstance> {
+    let component;
+    await act(async () => {
+        component = TestRenderer.create(<ShrinkedView />);
+    });
+    return JSON.parse(JSON.stringify(component.toJSON()));
+}
+
+function getChild(renderedObject: ReactTestInstance, childIndex: number): ReactTestInstance {
+    const child = renderedObject.children[childIndex] as ReactTestInstance;
+    return child;
+}
+
 describe("ShrinkedView", () => {
     it("renders correctly according to snapshot", () => {
         const shrinkedView = render();
         expect(shrinkedView.toJSON()).toMatchSnapshot();
+    });
+
+    it("renders icon as image with default src", async () => {
+        global.browser.tabs.query = () => {
+            return new Promise((resolve) => {
+                resolve([{url: "very-fake-website"}]);
+            });
+        };
+        const shrinkedView = await renderAsObject();
+        const img = getChild(shrinkedView, 0);
+        expect(img).toBeDefined();
+        expect(img.type).toBe("img");
+        expect(img.props.src).toContain("http://www.google.com/s2/favicons?domain=very-fake-website");
     });
 });
