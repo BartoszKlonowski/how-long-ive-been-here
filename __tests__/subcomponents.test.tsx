@@ -26,16 +26,29 @@ describe("ShrinkedView", () => {
         expect(shrinkedView.toJSON()).toMatchSnapshot();
     });
 
-    it("renders icon as image with default src", async () => {
+    it("renders icon as image with default src when missing icon on website", async () => {
         global.browser.tabs.query = () => {
             return new Promise((resolve) => {
-                resolve([{url: "very-fake-website"}]);
+                resolve([{url: ""}]);
             });
         };
         const shrinkedView = await renderAsObject();
         const img = getChild(shrinkedView, 0);
         expect(img).toBeDefined();
         expect(img.type).toBe("img");
-        expect(img.props.src).toContain("http://www.google.com/s2/favicons?domain=very-fake-website");
+        expect(img.props.src).toContain("../resources/missing-website-favicon.png");
+    });
+
+    it("renders icon as image with proper src when icon is available on website", async () => {
+        global.browser.tabs.query = () => {
+            return new Promise((resolve) => {
+                resolve([{url: "proper-existing-icon-url"}]);
+            });
+        };
+        const shrinkedView = await renderAsObject();
+        const img = getChild(shrinkedView, 0);
+        expect(img).toBeDefined();
+        expect(img.type).toBe("img");
+        expect(img.props.src).toContain("http://www.google.com/s2/favicons?domain=proper-existing-icon-url");
     });
 });
