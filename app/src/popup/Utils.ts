@@ -21,3 +21,22 @@ export const getWebsiteIconObject = (websiteURL: string | undefined): Icon => {
     };
     return icon;
 };
+
+export const howManyHoursInSeconds = (timeInSeconds: number): number => {
+    const secondsInOneHour = 60 * 60;
+    return (timeInSeconds - (timeInSeconds % secondsInOneHour)) / secondsInOneHour;
+};
+
+export const howManyMinutesInSeconds = (timeInSeconds: number): number => {
+    const secondsInOneMinute = 60;
+    if (timeInSeconds > secondsInOneMinute) {
+        return Math.trunc((timeInSeconds / secondsInOneMinute) % secondsInOneMinute);
+    } else {
+        return 0;
+    }
+};
+
+export const howManySecondsInSeconds = (timeInSeconds: number): number => {
+    const secondsInOneMinute = 60;
+    return timeInSeconds % secondsInOneMinute;
+};

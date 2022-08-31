@@ -1,4 +1,10 @@
-import {getActiveTabDomainFromURL, getWebsiteIconObject} from "../app/src/popup/Utils";
+import {
+    getActiveTabDomainFromURL,
+    getWebsiteIconObject,
+    howManyHoursInSeconds,
+    howManyMinutesInSeconds,
+    howManySecondsInSeconds,
+} from "../app/src/popup/Utils";
 
 describe("getActiveTabDomainFromURL", () => {
     it("gets the domain of valid active tab website with simplified URL", () => {
@@ -45,5 +51,46 @@ describe("getWebsiteIconObject", () => {
             size: 16,
             src: "../resources/missing-website-favicon.png",
         });
+    });
+});
+
+describe("howManyHoursInSeconds", () => {
+    it("calculates hours correctly regardless minutes, seconds", () => {
+        const seconds = 568923;
+        expect(howManyHoursInSeconds(seconds)).toBe(158);
+    });
+
+    it("returns 0 for number of seconds below one hour", () => {
+        const seconds = 2100;
+        expect(howManyHoursInSeconds(seconds)).toBe(0);
+    });
+});
+
+describe("howManyMinutesInSeconds", () => {
+    it("calculates minutes correctly regardless for seconds", () => {
+        const seconds = (10 + 60) * 60;
+        expect(howManyMinutesInSeconds(seconds)).toBe(10);
+    });
+
+    it("returns 0 for number of seconds below one minute", () => {
+        const seconds = 46;
+        expect(howManyMinutesInSeconds(seconds)).toBe(0);
+    });
+
+    it("returns 28 for number of seconds of 1:28:32", () => {
+        const seconds = 32 + 60 * 28 + 3600 * 1; // 1 hour, 28 minutes and 32 seconds
+        expect(howManyMinutesInSeconds(seconds)).toBe(28);
+    });
+});
+
+describe("howManySecondsInSeconds", () => {
+    it("calculates seconds correctly", () => {
+        const seconds = 70 * 60 + 24; // 70 minutes and 24 seconds
+        expect(howManySecondsInSeconds(seconds)).toBe(24);
+    });
+
+    it("returns 0 for number of seconds equal to one minute", () => {
+        const seconds = 60;
+        expect(howManySecondsInSeconds(seconds)).toBe(0);
     });
 });
