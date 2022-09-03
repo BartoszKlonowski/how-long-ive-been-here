@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
         "plugin:@typescript-eslint/recommended",
@@ -34,7 +35,8 @@
         "window": "readonly",
         "test": "writable",
         "expect": "writable",
-        "JSX": "readonly"
+        "JSX": "readonly",
+        "global": "writeable"
     },
     "settings": {
         "jsx-a11y": {
