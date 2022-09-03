@@ -32,7 +32,7 @@ describe("getWebsiteIconObject", () => {
     it("gets the domain of valid active tab website with simplified URL", () => {
         const fakeWebsiteURL = "fake-website-url";
         expect(getWebsiteIconObject(fakeWebsiteURL)).toEqual({
-            size: 16,
+            size: 20,
             src: "http://www.google.com/s2/favicons?domain=fake-website-url",
         });
     });
@@ -40,7 +40,7 @@ describe("getWebsiteIconObject", () => {
     it("creates the object with question mark for non-existing URL", () => {
         const fakeWebsiteURL = "";
         expect(getWebsiteIconObject(fakeWebsiteURL)).toEqual({
-            size: 16,
+            size: 20,
             src: "../resources/missing-website-favicon.png",
         });
     });
@@ -48,7 +48,7 @@ describe("getWebsiteIconObject", () => {
     it("creates the object with question mark for incorrect URL", () => {
         const incorrectWebsiteURL = undefined;
         expect(getWebsiteIconObject(incorrectWebsiteURL)).toEqual({
-            size: 16,
+            size: 20,
             src: "../resources/missing-website-favicon.png",
         });
     });

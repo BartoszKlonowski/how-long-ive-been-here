@@ -9,7 +9,7 @@ export const getActiveTabDomainFromURL = (URL: string): string | null => {
 };
 
 export const getWebsiteIconObject = (websiteURL: string | undefined): Icon => {
-    const iconDesiredSize = 16;
+    const iconDesiredSize = 20;
     const iconSource: string =
         websiteURL && websiteURL.length
             ? `http://www.google.com/s2/favicons?domain=${websiteURL}`
