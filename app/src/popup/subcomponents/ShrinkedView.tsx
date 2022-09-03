@@ -16,7 +16,6 @@ export const ShrinkedView = () => {
         browser.tabs
             .query({active: true})
             .then((result) => {
-                console.log("setting icon to: ", result[0].url);
                 setIcon(getWebsiteIconObject(result[0].url));
             })
             .catch((error: Error) => {
