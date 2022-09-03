@@ -18,3 +18,38 @@ html, body {
 .duration-header-text {
   padding: 10px;
 }
+.shrinked-view-container {
+  padding: 5px;
+  height: 40px;
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.shrinked-view-icon {
+  position: relative;
+}
+.shrinked-view-time-spent-text {
+  font-size: 16px;
+  text-align: center;
+  position: relative;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+}
+.shrinked-view-time-spent-text-container {
+  height: 40px;
+  width: 70px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.shrinked-view-icon-container {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

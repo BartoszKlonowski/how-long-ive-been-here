@@ -33,7 +33,7 @@ describe("ShrinkedView", () => {
             });
         };
         const shrinkedView = await renderAsObject();
-        const img = getChild(shrinkedView, 0);
+        const img = getChild(getChild(shrinkedView, 0), 0);
         expect(img).toBeDefined();
         expect(img.type).toBe("img");
         expect(img.props.src).toContain("../resources/missing-website-favicon.png");
@@ -46,7 +46,7 @@ describe("ShrinkedView", () => {
             });
         };
         const shrinkedView = await renderAsObject();
-        const img = getChild(shrinkedView, 0);
+        const img = getChild(getChild(shrinkedView, 0), 0);
         expect(img).toBeDefined();
         expect(img.type).toBe("img");
         expect(img.props.src).toContain("http://www.google.com/s2/favicons?domain=proper-existing-icon-url");

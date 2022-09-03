@@ -4,13 +4,28 @@ exports[`ShrinkedView renders correctly according to snapshot 1`] = `
 <div
   className="shrinked-view-container"
 >
-  <img
-    height={16}
-    src="../resources/missing-website-favicon.png"
-    width={16}
-  />
-  <p>
-    Time spent here (placeholder)
-  </p>
+  <div
+    className="shrinked-view-icon-container"
+  >
+    <img
+      className="shrinked-view-icon"
+      height={20}
+      src="../resources/missing-website-favicon.png"
+      width={20}
+    />
+  </div>
+  <div
+    className="shrinked-view-time-spent-text-container"
+  >
+    <div
+      className="shrinked-view-time-spent-text"
+    >
+      0
+      :
+      00
+      :
+      00
+    </div>
+  </div>
 </div>
 `;
