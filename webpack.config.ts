@@ -1,6 +1,5 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
-import 'webpack-dev-server';
 
 const config: webpack.Configuration = {
   entry: {
