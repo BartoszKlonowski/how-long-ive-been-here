@@ -1,6 +1,7 @@
-const path = require("path");
+import * as path from "path";
+import * as webpack from "webpack";
 
-module.exports = {
+const config: webpack.Configuration = {
     entry: {
         "src/popup/Popup": "./build/src/popup/Popup.js",
         "src/engine/Background": "./build/src/engine/Background.js",
@@ -10,3 +11,5 @@ module.exports = {
         path: path.resolve(__dirname, "build"),
     },
 };
+
+export default config;

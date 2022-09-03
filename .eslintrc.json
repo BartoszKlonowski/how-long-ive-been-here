@@ -36,7 +36,8 @@
         "test": "writable",
         "expect": "writable",
         "JSX": "readonly",
-        "global": "writeable"
+        "global": "writeable",
+        "__dirname": "readonly"
     },
     "settings": {
         "jsx-a11y": {
