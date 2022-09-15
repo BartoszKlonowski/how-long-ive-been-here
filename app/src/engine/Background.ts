@@ -1,29 +1,30 @@
 import browser from "webextension-polyfill";
-import { getActiveTabDomainFromURL } from "../popup/Utils";
+import {getActiveTabDomainFromURL} from "../popup/Utils";
 import Database from "./Database";
 
-function timeSpentSummary(currentDomain: string) {
-    if(currentDomain.length > 0) {
+function storeTimeSpentSummary(currentDomain: string) {
+    if (currentDomain.length > 0) {
         const db = new Database();
-        const lastDomain = db.readPreviousDomain();
+
+        const previousDomain = db.readPreviousDomain();
         db.writePreviousDomain(currentDomain);
-        const lastActive = db.readLastActive(lastDomain);
-        const timeSpent = Math.abs(Date.now() - lastActive.getTime());
-        let totalTimeSpentOfLastActive = db.readTimeSpent(lastDomain) as number;
-        totalTimeSpentOfLastActive += timeSpent;
         db.writeLastActive(currentDomain, new Date());
-        db.writeTimeSpent(lastDomain, totalTimeSpentOfLastActive);
+
+        const lastActive = db.readLastActive(previousDomain);
+        const timeSpent = Math.abs(Date.now() - lastActive.getTime());
+        const totalTimeSpentOfLastActive = (db.readTimeSpent(previousDomain) as number) + timeSpent;
+        db.writeTimeSpent(previousDomain, totalTimeSpentOfLastActive);
     }
 }
 
 browser.tabs.onActivated.addListener((activeInfo) => {
     browser.tabs.get(activeInfo.tabId).then((tab) => {
-        timeSpentSummary(getActiveTabDomainFromURL(tab?.url || "") || "");
-    })
+        storeTimeSpentSummary(getActiveTabDomainFromURL(tab?.url || "") || "");
+    });
 });
 
 browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status == "complete") {
-        timeSpentSummary(getActiveTabDomainFromURL(tab.url || "") || "");
+        storeTimeSpentSummary(getActiveTabDomainFromURL(tab.url || "") || "");
     }
 });
