@@ -5,6 +5,18 @@ export enum SupportedLanguages {
     PL = "pl",
 }
 
+export function getBrowserLanguage() {
+    const browserLanguage = Browser.i18n.getUILanguage().toLowerCase();
+    for(const supported in SupportedLanguages) {
+        if(supported.toLowerCase() === browserLanguage) {
+        return browserLanguage as SupportedLanguages;}
+    }   return SupportedLanguages.EN;
+}
+
+export function getLanguageSource(language: SupportedLanguages = SupportedLanguages.EN) {
+    return require(`./translations/${language}.json`);
+}
+
 export function translate(label: string) {
     let language;
     switch(Browser.i18n.getUILanguage()) {
