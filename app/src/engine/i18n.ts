@@ -5,7 +5,7 @@ export enum SupportedLanguages {
     PL = "pl",
 }
 
-export function getBrowserLanguage() {
+export function getSupportedBrowserLanguage() {
     const browserLanguage = Browser.i18n.getUILanguage().toLowerCase();
     for (const supported in SupportedLanguages) {
         if (supported.toLowerCase() === browserLanguage) {
@@ -20,18 +20,5 @@ export function getLanguageSource(language: SupportedLanguages = SupportedLangua
 }
 
 export function translate(label: string) {
-    let language;
-    switch (Browser.i18n.getUILanguage()) {
-        case SupportedLanguages.EN:
-            language = require("./translations/en.json");
-            break;
-        case SupportedLanguages.PL:
-            language = require("./translations/pl.json");
-            break;
-        default:
-            language = require("./translations/en.json");
-            break;
-    }
-
-    return language[label];
+    return getLanguageSource(getSupportedBrowserLanguage())[label];
 }
