@@ -1,4 +1,5 @@
 import React from "react";
+import {translate} from "../../engine/i18n";
 
 interface Props {
     isExpanded: boolean;
@@ -12,7 +13,9 @@ export const ViewChangeButton = ({isExpanded, onClick}: Props): JSX.Element => {
             onClick={() => {
                 onClick(!isExpanded);
             }}>
-            <p className="view-change-button-text">{isExpanded ? "Shrink" : "Expand"}</p>
+            <div className="view-change-button-text">
+                {isExpanded ? translate("shrink-button-label") : translate("expand-button-label")}
+            </div>
         </div>
     );
 };

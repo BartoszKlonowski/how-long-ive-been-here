@@ -1,22 +1,33 @@
-html, body {
-  width: 300px;
+.popup-view {
+  border: 5px solid #00e080;
+  background-color: #F2F2F2;
+  align-content: space-around;
+  padding: 2px;
 }
 .view-change-button {
   display: flex;
+  padding: 5px;
+  width: 50px;
+  height: 30px;
   flex-direction: row;
   justify-items: right;
   justify-content: right;
 }
 .view-change-button-text {
-  padding: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: small;
+  padding: 1px;
 }
 .duration-header {
   align-content: center;
   justify-content: center;
-  height: 50px;
+  padding: 5px;
+  height: 40px;
 }
 .duration-header-text {
-  padding: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: medium;
+  padding: 5px;
 }
 .shrinked-view-container {
   padding: 5px;

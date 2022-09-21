@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {
+    getActiveTabDomainFromURL,
     getWebsiteIconObject,
     howManyHoursInSeconds,
     howManyMinutesInSeconds,
@@ -7,6 +8,13 @@ import {
     Icon,
 } from "../Utils";
 import browser from "webextension-polyfill";
+import Database from "../../engine/Database";
+
+const getCurrentTimeForCurrentUrl = (domain: string): number => {
+    const db = new Database();
+    const timeSpent = (db.readTimeSpent(getActiveTabDomainFromURL(domain) || "") as number) || 0;
+    return timeSpent;
+};
 
 export const ShrinkedView = () => {
     const [icon, setIcon] = useState<Icon>(getWebsiteIconObject(""));
@@ -17,6 +25,7 @@ export const ShrinkedView = () => {
             .query({active: true})
             .then((result) => {
                 setIcon(getWebsiteIconObject(result[0].url));
+                setTimeInSeconds(getCurrentTimeForCurrentUrl(result[0].url!));
             })
             .catch((error: Error) => {
                 console.error(error.message);

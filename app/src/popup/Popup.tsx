@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import DurationHeader from "./subcomponents/DurationHeader";
+import ShrinkedView from "./subcomponents/ShrinkedView";
 import ViewChangeButton from "./subcomponents/ViewChangeButton";
 
 export const Popup = (): JSX.Element => {
@@ -13,9 +14,9 @@ export const Popup = (): JSX.Element => {
     }, [document]);
 
     return (
-        <div>
+        <div className="popup-view">
             <DurationHeader />
-            {expanded ? <div>ShrinkedViewPlaceholder</div> : <div>ExpandedViewPlaceholder</div>}
+            {expanded ? <div>ExpandedViewPlaceholder</div> : <ShrinkedView />}
             <ViewChangeButton isExpanded={expanded} onClick={setExpanded} />
         </div>
     );

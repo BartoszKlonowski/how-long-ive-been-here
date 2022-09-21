@@ -23,7 +23,7 @@ class Database {
     }
 
     readTimeSpent(domain?: string): number | Map<string, number> {
-        if (domain) {
+        if (domain !== undefined) {
             try {
                 const timeSpentObject = this.storage.getItem("timeSpent");
                 const timeSpentMap =
