@@ -1,4 +1,5 @@
 {
     "duration-header": "You spent here",
-    "expand-button-label": "More"
+    "expand-button-label": "More",
+    "shrink-button-label": "Less"
 }
