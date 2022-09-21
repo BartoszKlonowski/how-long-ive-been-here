@@ -1,9 +1,10 @@
 import React from "react";
+import {translate} from "../../engine/i18n";
 
 export const DurationHeader = () => {
     return (
         <div className="duration-header">
-            <p className="duration-header-text">You spent here (placeholder)</p>
+            <div className="duration-header-text">{translate("duration-header")}</div>
         </div>
     );
 };
