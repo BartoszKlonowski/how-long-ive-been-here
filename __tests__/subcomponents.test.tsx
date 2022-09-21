@@ -60,7 +60,6 @@ describe("ShrinkedView", () => {
         };
         const shrinkedView = await renderAsObject();
         const timeSpentText = getChild(getChild(shrinkedView, 1), 0);
-        console.log(JSON.stringify(timeSpentText));
         expect(timeSpentText).toBeDefined();
         expect(`${getChild(timeSpentText, 0)}:${getChild(timeSpentText, 2)}:${getChild(timeSpentText, 4)}`).toBe(
             "0:00:00"
