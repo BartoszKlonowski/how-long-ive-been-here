@@ -18,7 +18,7 @@ export const ExpandedView = () => {
     const renderTimeSpentTile = (domain: string, timeSpentInSeconds: number) => {
         const icon = getWebsiteIconObject(domain);
         return (
-            <li>
+            <li key={`timeSpentTile-${domain}`}>
                 <div className="expanded-view-tile-container">
                     <div className="expanded-view-icon-container">
                         <img className="expanded-view-icon" width={icon.size} height={icon.size} src={icon.src} />
