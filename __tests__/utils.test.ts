@@ -26,6 +26,13 @@ describe("getActiveTabDomainFromURL", () => {
         const fakeURL = String("www.google.com");
         expect(getActiveTabDomainFromURL(fakeURL)).toBe("google.com");
     });
+
+    it("correctly parses domains that contains h, t, p, or s characters at the beginning", () => {
+        expect(getActiveTabDomainFromURL("https://stackoverflow.com/questions")).toBe("stackoverflow.com");
+        expect(getActiveTabDomainFromURL("http://stackoverflow.com/questions")).toBe("stackoverflow.com");
+        expect(getActiveTabDomainFromURL("https://translate.google.pl/?sl=pl&tl=en&op=translate")).toBe("translate.google.pl");
+        expect(getActiveTabDomainFromURL("https://www.santander.pl/klient-indywidualny")).toBe("santander.pl");
+    })
 });
 
 describe("getWebsiteIconObject", () => {
