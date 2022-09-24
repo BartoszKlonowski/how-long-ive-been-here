@@ -8,15 +8,16 @@ interface Props {
 
 export const ViewChangeButton = ({isExpanded, onClick}: Props): JSX.Element => {
     return (
-        <div
+        <button
             className="view-change-button"
+            itemType="button"
             onClick={() => {
                 onClick(!isExpanded);
             }}>
             <div className="view-change-button-text">
                 {isExpanded ? translate("shrink-button-label") : translate("expand-button-label")}
             </div>
-        </div>
+        </button>
     );
 };
 
