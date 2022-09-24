@@ -107,13 +107,27 @@ describe("ExpandedView", () => {
 describe("ViewChangeButton", () => {
     it("renders correctly regarding the snapshot", () => {
         global.browser.i18n.getUILanguage = () => "EN";
-        const button = renderElement(<ViewChangeButton isExpanded={false} onClick={(status: boolean) => {}} />)
+        const button = renderElement(
+            <ViewChangeButton
+                isExpanded={false}
+                onClick={(_: boolean) => {
+                    _;
+                }}
+            />
+        );
         expect(button).toMatchSnapshot();
     });
 
     it("is created by a button type", async () => {
         global.browser.i18n.getUILanguage = () => "EN";
-        const button = await renderElementAsObject(<ViewChangeButton isExpanded={false} onClick={(status) => {}} />);
+        const button = await renderElementAsObject(
+            <ViewChangeButton
+                isExpanded={false}
+                onClick={(_) => {
+                    _;
+                }}
+            />
+        );
         expect(button.type).toBe("button");
     });
-})
+});
