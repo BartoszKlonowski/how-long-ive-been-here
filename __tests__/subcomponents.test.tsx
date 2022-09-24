@@ -2,6 +2,7 @@ import React from "react";
 import TestRenderer, {act, ReactTestInstance, ReactTestRenderer} from "react-test-renderer";
 import ShrinkedView from "../app/src/popup/subcomponents/ShrinkedView";
 import ExpandedView from "../app/src/popup/subcomponents/ExpandedView";
+import ViewChangeButton from "../app/src/popup/subcomponents/ViewChangeButton";
 
 function renderElement(element: JSX.Element): ReactTestRenderer {
     const component = TestRenderer.create(element);
@@ -102,3 +103,17 @@ describe("ExpandedView", () => {
         expect(getChild(expandedView, 0).children.length).toBe(3);
     });
 });
+
+describe("ViewChangeButton", () => {
+    it("renders correctly regarding the snapshot", () => {
+        global.browser.i18n.getUILanguage = () => "EN";
+        const button = renderElement(<ViewChangeButton isExpanded={false} onClick={(status: boolean) => {}} />)
+        expect(button).toMatchSnapshot();
+    });
+
+    it("is created by a button type", async () => {
+        global.browser.i18n.getUILanguage = () => "EN";
+        const button = await renderElementAsObject(<ViewChangeButton isExpanded={false} onClick={(status) => {}} />);
+        expect(button.type).toBe("button");
+    });
+})
