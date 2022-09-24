@@ -40,3 +40,15 @@ export const howManySecondsInSeconds = (timeInSeconds: number): number => {
     const secondsInOneMinute = 60;
     return timeInSeconds % secondsInOneMinute;
 };
+
+export const getMinutes = (timeInSeconds: number) => {
+    const minutes = howManyMinutesInSeconds(timeInSeconds);
+    return minutes < 10 ? `0${minutes}` : minutes.toString();
+};
+
+export const getSeconds = (timeInSeconds: number) => {
+    const seconds = howManySecondsInSeconds(timeInSeconds);
+    return seconds < 10 ? `0${seconds}` : seconds.toString();
+};
+
+export const getHours = (timeInSeconds: number) => howManyHoursInSeconds(timeInSeconds);

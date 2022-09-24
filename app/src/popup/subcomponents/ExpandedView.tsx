@@ -1,5 +1,5 @@
 import React from "react";
-import {getWebsiteIconObject, howManyHoursInSeconds, howManyMinutesInSeconds, howManySecondsInSeconds} from "../Utils";
+import {getHours, getMinutes, getSeconds, getWebsiteIconObject} from "../Utils";
 import Database from "../../engine/Database";
 
 export const ExpandedView = () => {
@@ -33,18 +33,6 @@ export const ExpandedView = () => {
             </div>
         );
     };
-
-    const getMinutes = (timeInSeconds: number) => {
-        const minutes = howManyMinutesInSeconds(timeInSeconds);
-        return minutes < 10 ? `0${minutes}` : minutes.toString();
-    };
-
-    const getSeconds = (timeInSeconds: number) => {
-        const seconds = howManySecondsInSeconds(timeInSeconds);
-        return seconds < 10 ? `0${seconds}` : seconds.toString();
-    };
-
-    const getHours = (timeInSeconds: number) => howManyHoursInSeconds(timeInSeconds);
 
     return <div className="expanded-view-list-container">{renderTimeSpentList()}</div>;
 };
