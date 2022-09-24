@@ -6,12 +6,12 @@
 }
 .view-change-button {
   display: flex;
-  padding: 5px;
-  width: 50px;
-  height: 30px;
+  padding: 3px;
+  border: 3px solid #FC4D17;
+  border-radius: 10px;
   flex-direction: row;
-  justify-items: right;
-  justify-content: right;
+  justify-items: center;
+  justify-content: center;
 }
 .view-change-button-text {
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -42,7 +42,7 @@
   position: relative;
 }
 .shrinked-view-time-spent-text {
-  font-size: 16px;
+  font-size: medium;
   text-align: center;
   position: relative;
   align-content: center;
