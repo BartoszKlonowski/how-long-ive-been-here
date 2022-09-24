@@ -64,3 +64,50 @@
   justify-content: center;
   align-items: center;
 }
+.expanded-view-list {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  list-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: #FC4D17 transparent;
+}
+.expanded-view-list-container {
+  max-width: 500px;
+  padding: 5px;
+  overflow: hidden;
+  scrollbar-color: #FC4D17;
+}
+.expanded-view-tile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  padding: 5px;
+  height: 45px;
+}
+.expanded-view-icon-container {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.expanded-view-icon {
+  width: 24px;
+  height: 24px;
+}
+.expanded-view-domain-container {
+  width: 300px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.expanded-view-domain-text {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: medium;
+}
+.expanded-view-time-spent-text-container {
+  width: 100px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.expanded-view-time-spent-text {
+  font-size: medium;
+  font-weight: bold;
+}

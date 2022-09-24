@@ -1,12 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {
-    getActiveTabDomainFromURL,
-    getWebsiteIconObject,
-    howManyHoursInSeconds,
-    howManyMinutesInSeconds,
-    howManySecondsInSeconds,
-    Icon,
-} from "../Utils";
+import {getActiveTabDomainFromURL, getHours, getMinutes, getSeconds, getWebsiteIconObject, Icon} from "../Utils";
 import browser from "webextension-polyfill";
 import Database from "../../engine/Database";
 
@@ -40,18 +33,6 @@ export const ShrinkedView = () => {
         return () => clearInterval(currentTimer);
     });
 
-    const getMinutes = () => {
-        const minutes = howManyMinutesInSeconds(timeInSeconds);
-        return minutes < 10 ? `0${minutes}` : minutes.toString();
-    };
-
-    const getSeconds = () => {
-        const seconds = howManySecondsInSeconds(timeInSeconds);
-        return seconds < 10 ? `0${seconds}` : seconds.toString();
-    };
-
-    const getHours = () => howManyHoursInSeconds(timeInSeconds);
-
     return (
         <div className="shrinked-view-container">
             <div className="shrinked-view-icon-container">
@@ -59,7 +40,7 @@ export const ShrinkedView = () => {
             </div>
             <div className="shrinked-view-time-spent-text-container">
                 <div className="shrinked-view-time-spent-text">
-                    {getHours()}:{getMinutes()}:{getSeconds()}
+                    {getHours(timeInSeconds)}:{getMinutes(timeInSeconds)}:{getSeconds(timeInSeconds)}
                 </div>
             </div>
         </div>
