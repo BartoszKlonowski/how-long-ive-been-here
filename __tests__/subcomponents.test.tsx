@@ -3,28 +3,15 @@ import TestRenderer, {act, ReactTestInstance, ReactTestRenderer} from "react-tes
 import ShrinkedView from "../app/src/popup/subcomponents/ShrinkedView";
 import ExpandedView from "../app/src/popup/subcomponents/ExpandedView";
 
-function renderShrinkedView(): ReactTestRenderer {
-    const shrinkedView = TestRenderer.create(<ShrinkedView />);
-    return shrinkedView;
+function renderElement(element: JSX.Element): ReactTestRenderer {
+    const component = TestRenderer.create(element);
+    return component;
 }
 
-async function renderShrinkedViewAsObject(): Promise<ReactTestInstance> {
+async function renderElementAsObject(element: JSX.Element): Promise<ReactTestInstance> {
     let component;
     await act(async () => {
-        component = TestRenderer.create(<ShrinkedView />);
-    });
-    return JSON.parse(JSON.stringify(component.toJSON()));
-}
-
-function renderExpandedView(): ReactTestRenderer {
-    const expandedView = TestRenderer.create(<ExpandedView />);
-    return expandedView;
-}
-
-async function renderExpandedViewAsObject(): Promise<ReactTestInstance> {
-    let component;
-    await act(async () => {
-        component = TestRenderer.create(<ExpandedView />);
+        component = TestRenderer.create(element);
     });
     return JSON.parse(JSON.stringify(component.toJSON()));
 }
@@ -36,7 +23,7 @@ function getChild(renderedObject: ReactTestInstance, childIndex: number): ReactT
 
 describe("ShrinkedView", () => {
     it("renders correctly according to snapshot", () => {
-        const shrinkedView = renderShrinkedView();
+        const shrinkedView = renderElement(<ShrinkedView />);
         expect(shrinkedView.toJSON()).toMatchSnapshot();
     });
 
@@ -46,7 +33,7 @@ describe("ShrinkedView", () => {
                 resolve([{url: ""}]);
             });
         };
-        const shrinkedView = await renderShrinkedViewAsObject();
+        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
         const img = getChild(getChild(shrinkedView, 0), 0);
         expect(img).toBeDefined();
         expect(img.type).toBe("img");
@@ -59,7 +46,7 @@ describe("ShrinkedView", () => {
                 resolve([{url: "proper-existing-icon-url"}]);
             });
         };
-        const shrinkedView = await renderShrinkedViewAsObject();
+        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
         const img = getChild(getChild(shrinkedView, 0), 0);
         expect(img).toBeDefined();
         expect(img.type).toBe("img");
@@ -72,7 +59,7 @@ describe("ShrinkedView", () => {
                 resolve([{url: ""}]);
             });
         };
-        const shrinkedView = await renderShrinkedViewAsObject();
+        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
         const timeSpentText = getChild(getChild(shrinkedView, 1), 0);
         expect(timeSpentText).toBeDefined();
         expect(`${getChild(timeSpentText, 0)}:${getChild(timeSpentText, 2)}:${getChild(timeSpentText, 4)}`).toBe(
@@ -83,7 +70,7 @@ describe("ShrinkedView", () => {
 
 describe("ExpandedView", () => {
     it("renders correctly according to snapshot", () => {
-        const expandedView = renderExpandedView();
+        const expandedView = renderElement(<ExpandedView />);
         expect(expandedView.toJSON()).toMatchSnapshot();
     });
 
@@ -91,7 +78,7 @@ describe("ExpandedView", () => {
         global._localStorage.getItem = (key: string) => {
             return key ? `{}` : null;
         };
-        const expandedView = await renderExpandedViewAsObject();
+        const expandedView = await renderElementAsObject(<ExpandedView />);
         expect(expandedView).toBeDefined();
         expect(getChild(expandedView, 0).children).toBeNull();
     });
@@ -100,7 +87,7 @@ describe("ExpandedView", () => {
         global._localStorage.getItem = (key: string) => {
             return `[["${key}", 20], ["fake", 20]]`;
         };
-        const expandedView = await renderExpandedViewAsObject();
+        const expandedView = await renderElementAsObject(<ExpandedView />);
         const mainList = getChild(expandedView, 0);
         expect(mainList.type).toBe("ul");
         expect(getChild(mainList, 0).type).toBe("li");
@@ -111,7 +98,7 @@ describe("ExpandedView", () => {
         global._localStorage.getItem = (key: string) => {
             return `[["first item", 10],["second item", 20],["${key}", 30]]`;
         };
-        const expandedView = await renderExpandedViewAsObject();
+        const expandedView = await renderElementAsObject(<ExpandedView />);
         expect(getChild(expandedView, 0).children.length).toBe(3);
     });
 });
