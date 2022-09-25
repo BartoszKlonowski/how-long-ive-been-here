@@ -230,3 +230,17 @@ exports[`ShrinkedView renders correctly according to snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`ViewChangeButton renders correctly regarding the snapshot 1`] = `
+<button
+  className="view-change-button"
+  itemType="button"
+  onClick={[Function]}
+>
+  <div
+    className="view-change-button-text"
+  >
+    More
+  </div>
+</button>
+`;
