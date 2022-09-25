@@ -5,6 +5,9 @@ class Database {
     }
 
     writeTimeSpent(domain: string, timeSpentInSeconds: number) {
+        if (domain.length === 0) {
+            return;
+        }
         try {
             const timeSpentObject = this.storage.getItem("timeSpent");
             if (timeSpentObject && timeSpentObject.length && timeSpentObject !== "{}") {
