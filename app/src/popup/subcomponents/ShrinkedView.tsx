@@ -12,6 +12,7 @@ const getCurrentTimeForCurrentUrl = (domain: string): number => {
 export const ShrinkedView = () => {
     const [icon, setIcon] = useState<Icon>(getWebsiteIconObject(""));
     const [timeInSeconds, setTimeInSeconds] = useState(0);
+    const [activeDomain, setActiveDomain] = useState("");
 
     useEffect(() => {
         browser.tabs
@@ -19,11 +20,19 @@ export const ShrinkedView = () => {
             .then((result) => {
                 setIcon(getWebsiteIconObject(result[0].url));
                 setTimeInSeconds(getCurrentTimeForCurrentUrl(result[0].url!));
+                setActiveDomain(getActiveTabDomainFromURL(result[0].url!) || "");
             })
             .catch((error: Error) => {
                 console.error(error.message);
             });
     }, []);
+
+    useEffect(() => {
+        return () => {
+            const db = new Database();
+            db.writeTimeSpent(activeDomain, timeInSeconds);
+        };
+    }, [activeDomain, timeInSeconds]);
 
     useEffect(() => {
         const currentTimer = setInterval(() => {
