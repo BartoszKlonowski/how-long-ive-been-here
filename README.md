@@ -1,5 +1,5 @@
 <div style="display: flex; justify-items: center; justify-content: center; align-items: center;">
-    <img src="./app/icons/mainicon.png" width="100px" height="100px"/>
+    <img src="./app/icons/mainIcon.png" width="100px" height="100px"/>
     <h1 align="center"> How long I've been here? </h1>
 </div>
 <p align="center">
@@ -69,7 +69,7 @@ If you plan to implement changes to this extension:
 2. Run `npm install` in the root of this repository to install all the dependencies and tools<br/>Please make sure to have the `npm` installed first.
 3. Implement your changes and test them:
 <br/>Manually by following [these steps](https://extensionworkshop.com/documentation/develop/debugging/)
-<br/>Or automatically by running `npm run-script test` and `npm run-script build` in the root of your clone
+<br/>Or automatically by running `npm run test` and `npm run build` in the root of your clone
 
 ---
 
