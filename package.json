@@ -1,6 +1,6 @@
 {
   "name": "how-long-ive-been-here",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Mozilla Firefox extension plugin to monitor the time spent on a website",
   "main": "manifest.json",
   "scripts": {
