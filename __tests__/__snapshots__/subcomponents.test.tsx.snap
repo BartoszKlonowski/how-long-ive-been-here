@@ -17,7 +17,7 @@ exports[`ExpandedView renders correctly according to snapshot 1`] = `
           <img
             className="expanded-view-icon"
             height={20}
-            src="http://www.google.com/s2/favicons?domain=w3schools.com"
+            src="https://icons.duckduckgo.com/ip3/w3schools.com.ico"
             width={20}
           />
         </div>
@@ -55,7 +55,7 @@ exports[`ExpandedView renders correctly according to snapshot 1`] = `
           <img
             className="expanded-view-icon"
             height={20}
-            src="http://www.google.com/s2/favicons?domain=ackoverflow.com"
+            src="https://icons.duckduckgo.com/ip3/ackoverflow.com.ico"
             width={20}
           />
         </div>
@@ -93,7 +93,7 @@ exports[`ExpandedView renders correctly according to snapshot 1`] = `
           <img
             className="expanded-view-icon"
             height={20}
-            src="http://www.google.com/s2/favicons?domain=github.com"
+            src="https://icons.duckduckgo.com/ip3/github.com.ico"
             width={20}
           />
         </div>
@@ -131,7 +131,7 @@ exports[`ExpandedView renders correctly according to snapshot 1`] = `
           <img
             className="expanded-view-icon"
             height={20}
-            src="http://www.google.com/s2/favicons?domain=google.com"
+            src="https://icons.duckduckgo.com/ip3/google.com.ico"
             width={20}
           />
         </div>
@@ -169,7 +169,7 @@ exports[`ExpandedView renders correctly according to snapshot 1`] = `
           <img
             className="expanded-view-icon"
             height={20}
-            src="http://www.google.com/s2/favicons?domain=npmjs.com"
+            src="https://icons.duckduckgo.com/ip3/npmjs.com.ico"
             width={20}
           />
         </div>

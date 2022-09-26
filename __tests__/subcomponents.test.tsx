@@ -44,14 +44,14 @@ describe("ShrinkedView", () => {
     it("renders icon as image with proper src when icon is available on website", async () => {
         global.browser.tabs.query = () => {
             return new Promise((resolve) => {
-                resolve([{url: "proper-existing-icon-url"}]);
+                resolve([{url: "proper.existing.icon.url"}]);
             });
         };
         const shrinkedView = await renderElementAsObject(<ShrinkedView />);
         const img = getChild(getChild(shrinkedView, 0), 0);
         expect(img).toBeDefined();
         expect(img.type).toBe("img");
-        expect(img.props.src).toContain("http://www.google.com/s2/favicons?domain=proper-existing-icon-url");
+        expect(img.props.src).toContain("https://icons.duckduckgo.com/ip3/proper.existing.icon.url.ico");
     });
 
     it("displays 0 time spent for incorrect domain", async () => {

@@ -42,7 +42,7 @@ describe("getWebsiteIconObject", () => {
         const fakeWebsiteURL = "fake-website-url";
         expect(getWebsiteIconObject(fakeWebsiteURL)).toEqual({
             size: 20,
-            src: "http://www.google.com/s2/favicons?domain=fake-website-url",
+            src: "https://icons.duckduckgo.com/ip3/fake-website-url.ico",
         });
     });
 
