@@ -16,7 +16,7 @@ export const getWebsiteIconObject = (websiteURL: string | undefined): Icon => {
     const iconDesiredSize = 20;
     const iconSource: string =
         websiteURL && websiteURL.length
-            ? `http://www.google.com/s2/favicons?domain=${websiteURL}`
+            ? `https://icons.duckduckgo.com/ip3/${websiteURL}.ico`
             : "../resources/missing-website-favicon.png";
 
     const icon: Icon = {

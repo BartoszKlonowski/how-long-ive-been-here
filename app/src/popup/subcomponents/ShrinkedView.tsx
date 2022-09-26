@@ -3,9 +3,9 @@ import {getActiveTabDomainFromURL, getHours, getMinutes, getSeconds, getWebsiteI
 import browser from "webextension-polyfill";
 import Database from "../../engine/Database";
 
-const getCurrentTimeForCurrentUrl = (domain: string): number => {
+const getCurrentTimeForCurrentDomain = (domain: string): number => {
     const db = new Database();
-    const timeSpent = (db.readTimeSpent(getActiveTabDomainFromURL(domain) || "") as number) || 0;
+    const timeSpent = (db.readTimeSpent(domain) as number) || 0;
     return timeSpent;
 };
 
@@ -18,9 +18,10 @@ export const ShrinkedView = () => {
         browser.tabs
             .query({active: true})
             .then((result) => {
-                setIcon(getWebsiteIconObject(result[0].url));
-                setTimeInSeconds(getCurrentTimeForCurrentUrl(result[0].url!));
-                setActiveDomain(getActiveTabDomainFromURL(result[0].url!) || "");
+                const domain = getActiveTabDomainFromURL(result[0].url!) || "";
+                setIcon(getWebsiteIconObject(domain));
+                setTimeInSeconds(getCurrentTimeForCurrentDomain(domain));
+                setActiveDomain(domain);
             })
             .catch((error: Error) => {
                 console.error(error.message);
