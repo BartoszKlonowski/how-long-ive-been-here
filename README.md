@@ -1,7 +1,9 @@
-<div style="display: flex; justify-items: center; justify-content: center; align-items: center;">
-    <img src="./app/icons/mainIcon.png"/>
-    <h1 align="center"> How long I've been here? </h1>
-</div>
+<p align="center">
+    <h1 align="center">
+        <img align="center" src="./app/icons/mainIcon.png" width="100px" height="100px"/>
+        How long I've been here?
+    </h1>
+</p>
 <p align="center">
     Keep the track of how much time you spent on a website
 </p>
