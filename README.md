@@ -1,5 +1,5 @@
 <div style="display: flex; justify-items: center; justify-content: center; align-items: center;">
-    <img src="./app/icons/mainIcon.png" width="100px" height="100px"/>
+    <img src="./app/icons/mainIcon.png"/>
     <h1 align="center"> How long I've been here? </h1>
 </div>
 <p align="center">
