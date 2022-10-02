@@ -38,7 +38,7 @@ This extension is to allow user to track his time, not to gather any data for st
 ## Installation & Usage ##
 
 This extension can be installed by:
-* installing it via the Mozilla add-ons market by clicking the button bellow:<br/><a href="https://addons.mozilla.org/pl/firefox/addon/how-long-ive-been-here/"><img src="./.github/resources/get-the-addon.png" alt="" /></a>
+* installing it via the Mozilla add-ons market by clicking the button bellow:<br/><a href="https://addons.mozilla.org/pl/firefox/addon/how-long-i-ve-been-here/"><img src="./.github/resources/get-the-addon.png" alt="" /></a>
 * downloading it directly from the [Releases page](https://github.com/BartoszKlonowski/how-long-ive-been-here/releases) and install it manually in your browser
 
 After successful installation you will see the extension icon in the upper-right corner of your browser.
