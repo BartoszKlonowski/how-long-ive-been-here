@@ -1,17 +1,15 @@
-import browser, { windows } from "webextension-polyfill";
-import {getActiveTabDomainFromURL} from "../popup/Utils";
+import browser from "webextension-polyfill";
+import {calculateTimeSpentForDomain, getActiveTabDomainFromURL} from "../popup/Utils";
 import {storeTimeSpentSummary} from "../popup/Utils";
 import Database from "./Database";
 
 browser.tabs.onActivated.addListener((activeInfo) => {
-    const db = new Database();
     browser.tabs.get(activeInfo.tabId).then((tab) => {
         storeTimeSpentSummary(getActiveTabDomainFromURL(tab?.url || "") || "");
     });
 });
 
 browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    const db = new Database();
     if (changeInfo.status == "complete") {
         storeTimeSpentSummary(getActiveTabDomainFromURL(tab.url || "") || "");
     }
@@ -22,8 +20,16 @@ window.addEventListener("focus", (ev) => {
 });
 
 browser.windows.onFocusChanged.addListener((id) => {
-    if(id === windows.WINDOW_ID_NONE) {
-        const db = new Database();
-        db.writePreviousDomain("no previous domain");
+    const windowInactiveID = -1;
+    const db = new Database();
+    if (id === windowInactiveID) {
+        calculateTimeSpentForDomain(db.readPreviousDomain());
+        db.writePreviousDomain("");
+    } else {
+        browser.tabs.query({active: true}).then((tab) => {
+            const newFocusedDomain = getActiveTabDomainFromURL(tab[0].url || "");
+            db.writeLastActive(newFocusedDomain || "", new Date());
+            db.writePreviousDomain(newFocusedDomain || "");
+        });
     }
 });
