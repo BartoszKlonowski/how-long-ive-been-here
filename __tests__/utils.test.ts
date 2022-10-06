@@ -37,10 +37,14 @@ describe("getActiveTabDomainFromURL", () => {
     });
 
     it("correctly parses domains that contains w at the beginning", () => {
-        expect(getActiveTabDomainFromURL("https://wybory2011.pkw.gov.pl/wsw/pl/000000.html")).toBe("wybory2011.pkw.gov.pl");
-        expect(getActiveTabDomainFromURL("https://wiadomosci.onet.pl/inwazja-rosji-na-ukraine")).toBe("wiadomosci.onet.pl");
+        expect(getActiveTabDomainFromURL("https://wybory2011.pkw.gov.pl/wsw/pl/000000.html")).toBe(
+            "wybory2011.pkw.gov.pl"
+        );
+        expect(getActiveTabDomainFromURL("https://wiadomosci.onet.pl/inwazja-rosji-na-ukraine")).toBe(
+            "wiadomosci.onet.pl"
+        );
         expect(getActiveTabDomainFromURL("https://www.wroclaw.pl/dla-mieszkanca/aktualnosci")).toBe("wroclaw.pl");
-    })
+    });
 });
 
 describe("getWebsiteIconObject", () => {

@@ -8,7 +8,8 @@ export interface Icon {
 export const getActiveTabDomainFromURL = (URL: string): string | null => {
     let result = URL.replace("https://", "");
     result = result.replace("http://", "");
-    const results = result.match(/[^w.][^ /]+/g);
+    result = result.replace("www.", "");
+    const results = result.match(/[^ /]+/g);
     return results && !results[0].includes(" ") && results[0].includes(".") ? results[0] : null;
 };
 
