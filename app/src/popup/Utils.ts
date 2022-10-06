@@ -34,12 +34,16 @@ export function storeTimeSpentSummary(currentDomain: string) {
     if (currentDomain.length > 0 && previousDomain !== currentDomain) {
         db.writePreviousDomain(currentDomain);
         db.writeLastActive(currentDomain, new Date());
-
-        const lastActive = db.readLastActive(previousDomain);
-        const timeSpent = Math.trunc(Math.abs(Date.now() - lastActive.getTime()) / 1000);
-        const totalTimeSpentOfLastActive = (db.readTimeSpent(previousDomain) as number) + timeSpent;
-        db.writeTimeSpent(previousDomain, totalTimeSpentOfLastActive);
+        calculateTimeSpentForDomain(previousDomain);
     }
+}
+
+export function calculateTimeSpentForDomain(domain: string) {
+    const db = new Database();
+    const lastActive = db.readLastActive(domain);
+    const timeSpent = Math.trunc(Math.abs(Date.now() - lastActive.getTime()) / 1000);
+    const totalTimeSpentOfLastActive = (db.readTimeSpent(domain) as number) + timeSpent;
+    db.writeTimeSpent(domain, totalTimeSpentOfLastActive);
 }
 
 export const howManyHoursInSeconds = (timeInSeconds: number): number => {
