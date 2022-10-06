@@ -15,10 +15,6 @@ browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     }
 });
 
-window.addEventListener("focus", (ev) => {
-    console.log("Focus event: ", ev);
-});
-
 browser.windows.onFocusChanged.addListener((id) => {
     const windowInactiveID = -1;
     const db = new Database();
