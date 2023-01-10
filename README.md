@@ -15,7 +15,7 @@
         <img src="https://img.shields.io/github/workflow/status/BartoszKlonowski/how-long-ive-been-here/HowLongIveBeenHere-UT?label=Tests&style=plastic" alt="Unit Tests status" />
     </a>
     <a href="https://github.com/BartoszKlonowski/how-long-ive-been-here/actions/workflows/HowLongIveBeenHere-CI.yml">
-        <img src="https://img.shields.io/github/workflow/status/BartoszKlonowski/how-long-ive-been-here/HowLongIveBeenHere-CI?label=Extension%20verification&style=plastic" alt="Package verification status" />
+        <img src="https://img.shields.io/github/actions/workflow/status/BartoszKlonowski/how-long-ive-been-here/HowLongIveBeenHere-CI.yml?label=Extension%20verification&style=plastic" alt="Package verification status" />
     </a>
 </p>
 
