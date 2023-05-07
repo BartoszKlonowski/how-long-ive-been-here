@@ -101,6 +101,13 @@
 .expanded-view-domain-text {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: medium;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.expanded-view-domain-text:hover {
+  text-decoration: underline;
+  color: #FC4D17;
+  text-decoration-color: #FC4D17;
 }
 .expanded-view-time-spent-text-container {
   width: 100px;
