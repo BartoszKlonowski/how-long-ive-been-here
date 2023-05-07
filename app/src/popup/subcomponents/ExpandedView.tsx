@@ -23,7 +23,11 @@ export const ExpandedView = () => {
                     <img className="expanded-view-icon" width={icon.size} height={icon.size} src={icon.src} />
                 </div>
                 <div className="expanded-view-domain-container">
-                    <div className="expanded-view-domain-text">{domain}</div>
+                    <div
+                        className="expanded-view-domain-text"
+                        onClick={() => open(`https://www.${domain}/`, Window.name)}>
+                        {domain}
+                    </div>
                 </div>
                 <div className="expanded-view-time-spent-text-container">
                     <div className="expanded-view-time-spent-text">
