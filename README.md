@@ -46,7 +46,7 @@ Popup that appears contains two views:
 | | | |
 |:-:|:-|:-:|
 | **Basic** | Initial view that displays the overall time spent on the currently active website. | <img width="400" height="auto" src=".github/resources/HowLongIveBeenHere-Example-Basic.gif" alt="" /> |
-| **Extended** | Available after pressing the "More" button. Contains the list of all visited websites and the overall time spent on each of them. | <img width="400" height="auto" src=".github/resources/HowLongIveBeenHere-Example-Extended.gif" alt="" /> |
+| **Extended** | Available after pressing the "More" button. Contains the list of all visited websites and the overall time spent on each of them.<br/><br/>Click on the selected website's name to open it in new tab. | <img width="400" height="auto" src=".github/resources/HowLongIveBeenHere-Example-Extended.gif" alt="" /> |
 
 ---
 
