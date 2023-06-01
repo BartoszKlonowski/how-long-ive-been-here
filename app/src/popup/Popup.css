@@ -101,13 +101,16 @@
 .expanded-view-domain-text {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: medium;
-  text-decoration: underline;
   cursor: pointer;
+  text-decoration: none;
+  background-image: linear-gradient(to right, #FC4D17, #FC4D17);
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  background-size: 10% 1px;
+  transition: background-size .5s ease;
 }
 .expanded-view-domain-text:hover {
-  text-decoration: underline;
-  color: #FC4D17;
-  text-decoration-color: #FC4D17;
+  background-size: 50% 1px;
 }
 .expanded-view-time-spent-text-container {
   width: 100px;
