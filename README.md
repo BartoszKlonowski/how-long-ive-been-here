@@ -1,3 +1,14 @@
+
+---
+
+> [!Important]
+> This repository and extension has been superseded by [Browsing Stats](https://github.com/BartoszKlonowski/browsing-stats). It has more features, options and has improved user experience. The **How long I've been here** add-on will no longer be maintained.
+>
+> Please give the **Browsing Stats** extension a shot by visiting the page and downloading it.
+> Thank you!
+
+---
+
 <p align="center">
     <h1 align="center">
         <img align="center" src="./app/icons/mainIcon.png" width="100px" height="100px"/>
